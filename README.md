@@ -1,24 +1,7 @@
-# README
+# Product description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I am building a webapp in Ruby on Rails that would be used to manage inventories in a company.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Users can create multiple inventories, manage access, choose fields, add custom fields, and naturally input data.
+Inventories have following functionalities: listing, users chat, settings, custom id generation, fields selection, access, statistics, exporting data.
+Admins can manage users, and have access to all inventories.
