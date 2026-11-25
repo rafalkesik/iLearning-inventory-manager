@@ -8,8 +8,8 @@ module PagesHelper
         id:    "#{label}-tab",
         type: 'button',
         role: 'tab',
-        data: { bs_toggle: 'tab', bs_target: "##{label}-tab-pane"},
-        aria: { controls: "#{label}-tab-pane}", selected: active }
+        data: { bs_toggle: 'tab', bs_target: "##{label}-tab-pane" },
+        aria: { controls: "#{label}-tab-pane", selected: active }
       )
     end
   end
