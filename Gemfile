@@ -27,3 +27,5 @@ end
 
 gem "bootstrap"
 gem "sassc-rails"
+gem "devise", "~> 5.0"
+gem "view_component", "~> 4.25"

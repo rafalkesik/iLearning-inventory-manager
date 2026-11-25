@@ -1,0 +1,32 @@
+<div class="container-fluid d-flex p-0">
+  <div class="col-12 col-sm-6 d-flex align-items-center justify-content-center">
+    <div class="w-100 px-3" style="max-width: 24rem;">
+      <h2>Log in</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, class: 'form-label' %>
+          <%= f.email_field :email, class: 'form-control', placeholder: 'Your Email',
+                            autocomplete: "email" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-control',
+                               placeholder: 'Your Password',
+                               autocomplete: "current-password" %>
+        </div>
+        <div class="form-check mb-3">
+          <%= f.check_box :remember_me, class: 'form-check-input' %>
+          <%= f.label :remember_me, class: 'form-check-label' %>
+        </div>
+        <%= f.submit "Log in", class: 'btn btn-primary' %>
+      <% end %>
+      <div class="mt-4">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 d-none d-sm-flex align-items-center justify-content-center">
+    <%= image_tag 'logo 200px.png', class: 'img-fluid' %>
+  </div>
+</div>
