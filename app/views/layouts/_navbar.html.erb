@@ -24,10 +24,15 @@
           </li>
 
         </ul>
-        <form class="">
-          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary mr-2" %>
-          <%= link_to "Signup", new_user_registration_path, class: "btn btn-outline-success" %>
-        </form>
+        <div class='d-flex align-items-center gap-2'>
+          <% if user_signed_in? %>
+            <div class='text-secondary'>Logged in as: <%= current_user.email %></div>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
+          <% else %>
+            <%= link_to "Log in", new_user_session_path, class: 'btn btn-outline-primary' %>
+            <%= link_to "Signup", new_user_registration_path, class: "btn btn-outline-success" %>
+          <% end %>
+        </div>
 
       </div>
     </div>
