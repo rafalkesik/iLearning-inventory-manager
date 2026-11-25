@@ -5,13 +5,12 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="mb-3">
           <%= f.label :email, class: 'form-label' %>
-          <%= f.email_field :email, class: 'form-control', placeholder: 'Your Email',
-                            autocomplete: "email" %>
+          <%= f.email_field :email, class: 'form-control',
+                            autocomplete: "email", autofocus: true %>
         </div>
         <div class="mb-3">
           <%= f.label :password, class: 'form-label' %>
           <%= f.password_field :password, class: 'form-control',
-                               placeholder: 'Your Password',
                                autocomplete: "current-password" %>
         </div>
         <div class="form-check mb-3">
