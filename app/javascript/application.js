@@ -4,3 +4,7 @@ import "controllers"
 import "popper"
 import "bootstrap"
 
+document.addEventListener("turbo:load", () => {
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(el => new window.bootstrap.Popover(el))
+})
