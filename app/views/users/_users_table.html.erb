@@ -40,21 +40,21 @@
         <thead>
           <tr>
             <th>
-              <%# <input
+              <input
                 type="checkbox"
                 class="form-check-input"
-                id='select-all-tasks'
-                autocomplete='off',
-                name='user_ids[]',
-                value='all_users'
-                /> %>
+                id='select-all-users'
+                autocomplete='off'
+                data-checkbox-select-all-target="selectAll"
+                data-action="click->checkbox-select-all#toggleAll"
+                />
             </th>
             <th>Email</th>
             <th>Admin</th>
           </tr>
         </thead>
         <tbody>
-          <% @users.each.with_index do |user, i| %>
+          <% @users.each do |user| %>
             <tr>
               <td>
                 <input
@@ -64,7 +64,8 @@
                   autocomplete='off',
                   value='<%= user.id %>'
                   data-checkbox-select-all-target="checkbox"
-                  data-action="click->checkbox-select-all#toggle" />
+                  data-action="click->checkbox-select-all#toggle"
+                />
               </td>
               <td><%= user.email %></td>
               <td><%= user.admin %></td>
