@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :verify_users_selected, only: [:bulk_destroy, :bulk_promote, :bulk_downgrade]
+  before_action :verify_admin
+  before_action :verify_users_selected, only: %i[bulk_destroy bulk_promote bulk_downgrade]
 
   def index
     @users = User.all.order(:created_at).paginate(page: params[:page])
@@ -33,9 +34,13 @@ class UsersController < ApplicationController
 
   private
 
+    def verify_admin
+      return if current_user&.admin
+      redirect_to root_path, status: :see_other
+    end
+   
     def verify_users_selected
       return if params[:user_ids].present?
-
       redirect_to users_path, alert: "No users selected", status: :see_other
     end
 end
