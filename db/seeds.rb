@@ -7,3 +7,18 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "json"
+
+path = Rails.root.join("db/seeds/users.json")
+
+if File.exist?(path)
+  rows = JSON.parse(File.read(path))
+  rows.each do |row|
+    user = User.find_or_initialize_by(email: row['email'])
+    user.password = row['password']
+    user.password_confirmation = row['password_confirmation']
+    user.admin = row['admin']
+    user.save!
+  end
+end

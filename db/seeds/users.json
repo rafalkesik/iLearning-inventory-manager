@@ -1,0 +1,14 @@
+[
+  {
+    "email":                 "admin@test.com",
+    "password":              "password",
+    "passwrod_confirmation": "password",
+    "admin":                 "true"
+  },
+  {
+    "email":                 "user@test.com",
+    "password":              "password",
+    "passwrod_confirmation": "password",
+    "admin":                 "false"
+  }
+]
