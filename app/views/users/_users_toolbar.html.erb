@@ -1,0 +1,39 @@
+<div class='bg-body-tertiary p-2 d-flex flex-wrap gap-2'>
+  <span class='relative group'>
+    <button type="submit"
+            class="btn btn-sm btn-warning"
+            formaction="<%= users_path %>"
+            tabindex="0"
+            data-bs-toggle="popover"
+            data-bs-trigger="hover focus"
+            data-bs-content="Promote selected users to admin role">
+      ⤴️ Promote
+    </button>
+  </span>
+
+  <span class='relative group'>
+    <button type="submit"
+            class="btn btn-sm btn-success"
+            formaction="<%= users_path %>"
+            tabindex="0"
+            data-bs-toggle="popover"
+            data-bs-trigger="hover focus"
+            data-bs-content="Strip selected users from admin role">
+      ⤵️
+    </button>
+  </span>
+
+  <span class='relative group'>
+    <button type="submit"
+            class="btn btn-sm btn-danger"
+            formaction="<%= bulk_destroy_users_path %>"
+            tabindex="0"
+            name="_method"
+            value="delete"
+            data-bs-toggle="popover"
+            data-bs-trigger="hover focus"
+            data-bs-content="Delete selected users">
+      🗑️
+    </button>
+  </span>
+</div>

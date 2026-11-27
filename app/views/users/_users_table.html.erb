@@ -4,35 +4,7 @@
       <%= will_paginate @users, :container => false %>
     </div>
 
-    <div class='bg-body-tertiary p-2 d-flex flex-wrap gap-2'>
-      <span class='relative group'>
-        <button type="submit" class="btn btn-sm btn-warning"
-                formaction="<%= users_path %>" tabindex="0"
-                data-bs-toggle="popover" data-bs-trigger="hover focus"
-                data-bs-content="Block selected users">
-          🔐 Block
-        </button>
-      </span>
-
-      <span class='relative group'>
-        <button type="submit" class="btn btn-sm btn-success"
-                formaction="<%= users_path %>" tabindex="0"
-                data-bs-toggle="popover" data-bs-trigger="hover focus"
-                data-bs-content="Unblock selected users">
-          🔓
-        </button>
-      </span>
-
-      <span class='relative group'>
-        <button type="submit" class="btn btn-sm btn-danger"
-                formaction="<%= users_path %>" tabindex="0"
-                name="_method" value="delete"
-                data-bs-toggle="popover" data-bs-trigger="hover focus"
-                data-bs-content="Delete selected users">
-          🗑️
-        </button>
-      </span>
-    </div>
+    <%= render 'users/users_toolbar' %>
 
     <div class='table-responsive'>
       <table class="table table-hover" data-controller="checkbox-select-all"
@@ -61,7 +33,7 @@
                   type="checkbox"
                   class="form-check-input"
                   name='user_ids[]'
-                  autocomplete='off',
+                  autocomplete='off'
                   value='<%= user.id %>'
                   data-checkbox-select-all-target="checkbox"
                   data-action="click->checkbox-select-all#toggle"
