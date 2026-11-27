@@ -10,9 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_11_26_141522) do
+ActiveRecord::Schema[7.1].define(version: 2026_11_27_152049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "inventory_visibility", ["public", "private"]
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_categories_on_title", unique: true
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.enum "visibility", default: "private", null: false, enum_type: "inventory_visibility"
+    t.bigint "category_id"
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_inventories_on_author_id"
+    t.index ["category_id"], name: "index_inventories_on_category_id"
+  end
+
+  create_table "inventory_tags", force: :cascade do |t|
+    t.bigint "inventory_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inventory_id", "tag_id"], name: "index_inventory_tags_on_inventory_id_and_tag_id", unique: true
+    t.index ["inventory_id"], name: "index_inventory_tags_on_inventory_id"
+    t.index ["tag_id"], name: "index_inventory_tags_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_tags_on_title", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +67,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_11_26_141522) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "inventories", "categories"
+  add_foreign_key "inventories", "users", column: "author_id"
+  add_foreign_key "inventory_tags", "inventories"
+  add_foreign_key "inventory_tags", "tags"
 end
