@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     collection do
       delete :bulk_destroy
+      patch  :bulk_promote
+      patch  :bulk_downgrade
     end
   end
 
