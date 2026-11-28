@@ -7,6 +7,7 @@ class InventoriesController < ApplicationController
 
   def new
     @inventory = Inventory.new
+    @categories = Category.all.map(&:title)
   end
 
   def show

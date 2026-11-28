@@ -20,7 +20,7 @@
         </div>
         <div class='mt-5'>
           <%= f.label "category (optional)", class: 'form-label' %>
-          <%= f.select :category, ["Equipment", "Furniture", "Book", "Other"],
+          <%= f.select :category, @categories,
                         { prompt: "Choose category..." },
                         class: 'form-select' %>
         </div>
