@@ -2,6 +2,7 @@ class InventoriesController < ApplicationController
   before_action :authenticate_user, only: %i[new]
 
   def index
+    @inventories = Inventory.all
   end
 
   def new
