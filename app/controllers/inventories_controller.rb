@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  before_action :authenticate, only: %i[new]
+  before_action :authenticate_user, only: %i[new]
 
   def index
   end
@@ -7,4 +7,24 @@ class InventoriesController < ApplicationController
   def new
     @inventory = Inventory.new
   end
+
+  def create
+    @inventory = Inventory.new(inventory_params)
+    @inventory.author = current_user
+
+    if @inventory.save
+      flash[:success] = "Successfully created a new inventory"
+      redirect_to inventories_path, status: :see_other
+    else
+      flash[:warning] = "Something went wrong"
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+    def inventory_params
+      permitted = params.require(:inventory).permit(:title, :description, :visibility, :category)
+      permitted.compact_blank
+    end
 end
