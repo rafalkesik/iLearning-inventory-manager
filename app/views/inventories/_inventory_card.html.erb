@@ -1,5 +1,6 @@
 <%= link_to inventory, class: "text-decoration-none card card-hover text-start p-0" do %>
   <div class="card-header">
+    <span class='badge text-bg-info'><%= inventory.category&.title %></span>
     <span class='badge text-bg-warning'>Example_tag</span>
   </div>
   <div class="card-body">
