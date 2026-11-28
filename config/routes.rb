@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :categories,  only: %i[create destroy]
   resources :tags,        only: %i[create destroy]
 
-  root "pages#home"
+  root "inventories#index"
 end
