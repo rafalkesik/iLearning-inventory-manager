@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :inventories, only: %i[index new create show]
-  resources :categories,  only: %i[create destroy]
-  resources :tags,        only: %i[create destroy]
+  resources :categories,  only: %i[new create]
+  resources :tags,        only: %i[new create]
 
   root "inventories#index"
 end
