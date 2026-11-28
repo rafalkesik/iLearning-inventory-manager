@@ -19,8 +19,8 @@
                         class: 'form-select', required: true %>
         </div>
         <div class='mt-5'>
-          <%= f.label "category (optional)", class: 'form-label' %>
-          <%= f.select :category, @categories,
+          <%= f.label :category_id, "Category (optional)", class: 'form-label' %>
+          <%= f.select :category_id, @categories,
                         { prompt: "Choose category..." },
                         class: 'form-select' %>
         </div>

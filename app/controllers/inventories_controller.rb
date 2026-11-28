@@ -7,7 +7,9 @@ class InventoriesController < ApplicationController
 
   def new
     @inventory = Inventory.new
-    @categories = Category.all.map(&:title)
+    @categories = Category.all.map do |category|
+      [category.title, category.id]
+    end
   end
 
   def show
@@ -31,7 +33,7 @@ class InventoriesController < ApplicationController
   private
 
     def inventory_params
-      permitted = params.require(:inventory).permit(:title, :description, :visibility, :category)
+      permitted = params.require(:inventory).permit(:title, :description, :visibility, :category_id)
       permitted.compact_blank
     end
 end
