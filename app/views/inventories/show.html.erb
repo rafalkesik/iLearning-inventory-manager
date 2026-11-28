@@ -1,0 +1,26 @@
+<div class='d-flex flex-column gap-5'>
+  <h1>
+    Inventory View
+  </h1>
+
+  <div class='d-flex flex-column gap-3 px-3'>
+    <div class='border rounded py-2 px-3'>
+      <div class='row'>
+        <div class='col-8'>
+          <h2>
+            <%= @inventory.title %>
+          </h2>
+          <p class='fw-lighter'>
+            <%= @inventory.description %>
+          </p>
+        </div>
+
+        <p class='fw-lighter fw-italic col-4 text-end'>
+          Author: <%= @inventory.author.email %>
+        </p>
+      </div>
+    </div>
+    
+    <%= render 'inventories/inventory_table' %>
+  </div>
+</div>

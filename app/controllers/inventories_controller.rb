@@ -9,6 +9,11 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new
   end
 
+  def show
+    @tabs = ['Items', 'Chat ∅', 'Settings ∅', 'Custom ID ∅', 'Fields ∅', 'Access ∅', 'Stats ∅', 'Export ∅']
+    @inventory = Inventory.find(params[:id])
+  end
+
   def create
     @inventory = Inventory.new(inventory_params)
     @inventory.author = current_user
