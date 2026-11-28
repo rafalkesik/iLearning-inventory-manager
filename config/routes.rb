@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :inventories, only: %i[index]
+  resources :inventories, only: %i[index new]
   resources :categories,  only: %i[create destroy]
   resources :tags,        only: %i[create destroy]
 

@@ -1,0 +1,23 @@
+<div class='d-flex flex-column gap-5'>
+  <h1>
+    All existing inventories
+  </h1>
+
+  <div class='w-75 ms-3 d-flex flex-column gap-3'>
+    <%= link_to "Add new inventory", new_inventory_path,
+                class: 'btn btn-primary align-self-start' %>
+    
+    <% 2.times do %>
+      <a class="text-decoration-none card card-hover text-start p-0">
+        <div class="card-header">
+          <span class='btn bg-success-subtle btn-sm pe-none py-0'>IT_tag</span>
+          <span class='btn bg-success-subtle btn-sm pe-none py-0'>Finance_tag</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Inventory title</h5>
+          <p class="card-text">Inventory description. It is there to explain what the inventory is for and what it consists of.</p>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

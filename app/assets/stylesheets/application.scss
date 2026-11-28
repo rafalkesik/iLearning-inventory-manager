@@ -1,2 +1,7 @@
 @import "bootstrap";
 @import 'pagination';
+
+.card-hover:hover {
+  background-color: var(--bs-secondary-bg);
+  cursor: pointer;
+}
